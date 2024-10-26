@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int                @id @default(autoincrement())
+  email            String             @unique
+  username         String             @unique
+  password         String
+  name             String?
+  bio              String?
+  profileImg       String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  writtenArticles  Article[]
+  comments         Comment[]
+  UserLikesArticle UserLikesArticle[]
+  FollowedBy       Follows[]          @relation("followedBy")
+  Following        Follows[]          @relation("following")
+}
+
+model Article {
+  id            Int                @id @default(autoincrement())
+  slug          String
+  title         String
+  subtitle      String
+  body          String
+  likes         Int?
+  comments      Comment[]
+  tags          ArticleTag[]
+  likedArticles UserLikesArticle[]
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  authorId Int
+  author   User @relation(fields: [authorId], references: [id])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId Int
+  author   User @relation(fields: [authorId], references: [id])
+
+  articleId Int
+  article   Article @relation(fields: [articleId], references: [id])
+}
+
+model Tag {
+  id        Int          @id @default(autoincrement())
+  name      String
+  article   ArticleTag[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model ArticleTag {
+  articleId Int
+  article   Article @relation(fields: [articleId], references: [id])
+
+  tagId Int
+  tag   Tag @relation(fields: [tagId], references: [id])
+
+  @@id([articleId, tagId])
+}
+
+model UserLikesArticle {
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  articleId Int
+  Article   Article @relation(fields: [articleId], references: [id])
+
+  @@id([userId, articleId])
+}
+
+model Follows {
+  followedById Int
+  followedBy   User @relation("followedBy", fields: [followedById], references: [id])
+
+  followingId Int
+  following   User @relation("following", fields: [followingId], references: [id])
+
+  @@id([followedById, followingId])
+}
