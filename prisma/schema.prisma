@@ -26,13 +26,13 @@ model User {
 
 model Article {
   id            Int                @id @default(autoincrement())
-  slug          String
+  slug          String             @unique
   title         String
   subtitle      String
   body          String
   likes         Int?
   comments      Comment[]
-  tags          ArticleTag[]
+  tags          Tag[]              @relation("ArticleTags")
   likedArticles UserLikesArticle[]
   createdAt     DateTime           @default(now())
   updatedAt     DateTime           @updatedAt
@@ -55,21 +55,11 @@ model Comment {
 }
 
 model Tag {
-  id        Int          @id @default(autoincrement())
-  name      String
-  article   ArticleTag[]
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-}
-
-model ArticleTag {
-  articleId Int
-  article   Article @relation(fields: [articleId], references: [id])
-
-  tagId Int
-  tag   Tag @relation(fields: [tagId], references: [id])
-
-  @@id([articleId, tagId])
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  articles  Article[] @relation("ArticleTags")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model UserLikesArticle {
