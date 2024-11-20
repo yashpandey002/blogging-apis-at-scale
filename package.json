@@ -4,7 +4,8 @@
     "description": "# Entities",
     "main": "index.js",
     "scripts": {
-        "devstart": "nodemon"
+        "devstart": "nodemon",
+        "build": "tsc"
     },
     "keywords": [],
     "author": "",
