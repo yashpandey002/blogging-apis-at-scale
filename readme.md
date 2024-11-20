@@ -63,26 +63,26 @@
 
 ## Users
 
--   User can register✅
--   User who has already registered, can login✅
--   Users can update their profile✅
--   Users can see other user's profile✅
--   Users can (un)follow other users✅
+-   User can register
+-   User who has already registered, can login
+-   Users can update their profile
+-   Users can see other user's profile
+-   Users can (un)follow other users
 
 ## Articles
 
--   Guests/Users can fetch all articles✅
-    -   Filter by tags✅
-    -   Filter by authors✅
-    -   Sort by created_at✅
-    -   Sort by likes✅
--   Guests/Users can fetch a single article✅
--   Users can fetch articles written by users whom they follow (Your Feed)✅
--   Users can create new articles✅
-    -   Required tags will be created and associated to article✅
--   Users can update their own articles✅
--   Users can delete their own articles✅
--   Users can (un)favourite an article✅
+-   Guests/Users can fetch all articles
+    -   Filter by tags
+    -   Filter by authors
+    -   Sort by created_at
+    -   Sort by likes
+-   Guests/Users can fetch a single article
+-   Users can fetch articles written by users whom they follow (Your Feed)
+-   Users can create new articles
+    -   Required tags will be created and associated to article
+-   Users can update their own articles
+-   Users can delete their own articles
+-   Users can (un)favourite an article
 
 ## Comments
 
