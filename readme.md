@@ -71,18 +71,18 @@
 
 ## Articles
 
--   Guests/Users can fetch all articles
-    -   Filter by tags
-    -   Filter by authors
-    -   Sort by created_at
-    -   Sort by likes
--   Guests/Users can fetch a single article
--   Users can fetch articles written users whom they follow (Your Feed)
--   Users can create new articles
-    -   Required tags will be created and associated to article
--   Users can update their own articles
--   Users can delete their own articles
--   Users can (un)favourite an article
+-   Guests/Users can fetch all articles✅
+    -   Filter by tags✅
+    -   Filter by authors✅
+    -   Sort by created_at✅
+    -   Sort by likes✅
+-   Guests/Users can fetch a single article✅
+-   Users can fetch articles written by users whom they follow (Your Feed)✅
+-   Users can create new articles✅
+    -   Required tags will be created and associated to article✅
+-   Users can update their own articles✅
+-   Users can delete their own articles✅
+-   Users can (un)favourite an article✅
 
 ## Comments
 

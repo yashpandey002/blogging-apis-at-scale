@@ -38,4 +38,20 @@ function createJsonToken(user: { id: string }) {
     return token;
 }
 
-export { errorHandler, asyncHandler, createJsonToken };
+async function generateUniqueSlug(userSlug: string): Promise<string> {
+    const { nanoid } = await import('nanoid');
+    return `${userSlug}-ID${nanoid()}`;
+}
+
+function updateExistingSlug(existingSlug: string, newSlug: string): string {
+    const slugId = existingSlug.split('-ID')[1];
+    return `${newSlug}-ID${slugId}`;
+}
+
+export {
+    errorHandler,
+    asyncHandler,
+    createJsonToken,
+    generateUniqueSlug,
+    updateExistingSlug,
+};
